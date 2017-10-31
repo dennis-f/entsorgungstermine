@@ -7,7 +7,8 @@
 
   <div class="dates">
     <ul>
-      <li v-text="date" v-for="date in shownDates"></li>
+      <li v-text="value" v-for="value in filteredMonths">
+      </li>
     </ul>
   </div>
 
@@ -15,12 +16,15 @@
 </template>
 
 <script>
+import Date from '@/components/Date';
+
 export default {
   name: 'TerminFinder',
   data () {
     return {
       selectedStreet: '',
-      shownDates: [],
+      dates: {},
+      filteredMonths: [],
       msg: 'Entsorgungstermine finden'
     }
   },
@@ -32,11 +36,15 @@ export default {
       let self = this;
       let promise = this.$store.getters.getDatesFor(this.selectedStreet);
       promise.then(function (response) {
-        self.shownDates = response.data;
+        self.filteredMonths = self.filterMonths(response.data);
+        console.log('self.filteredMonths', self.filteredMonths);
       })
       .catch(function (error) {
         console.log(error);
       });
+    },
+    filterMonths (dates) {
+      return dates.months.filter(m => m.values.length > 0)
     }
   },
   computed: {
@@ -46,6 +54,9 @@ export default {
   },
   created () {
     this.init();
+  },
+  components: {
+    'date': Date
   }
 }
 </script>
