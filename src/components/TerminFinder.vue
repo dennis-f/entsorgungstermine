@@ -1,13 +1,9 @@
 <template>
   <div class="terminfinder">
     <p>Finde Entsorgungstermine für <strong>Potsdam</strong>.</p>
-    <ul>
-      <li><a href="">Aalstraße</a></li>
-    </ul>
-
-    <ul v-for="street in streets">
-      <li v-text="street"></li>
-    </ul>
+    <select>
+      <option v-text="street" v-for="street in streets"></option>
+    </select>
   </div>
 </template>
 
