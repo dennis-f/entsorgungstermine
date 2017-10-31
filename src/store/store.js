@@ -9,7 +9,7 @@ const store = new Vuex.Store({
 		streets: []
 	},
 	actions: {
-		LOAD_CONFIG: function ({ commit }) {
+    LOAD_CONFIG: function ({ commit }) {
       let self = this;
       let uri = '../static/data/potsdam/streetnames.json';
       axios.get(uri)
@@ -29,6 +29,11 @@ const store = new Vuex.Store({
   getters: {
     getStreets: state => {
       return state.streets;
+    },
+    getDatesFor: state => (streetName) => {
+      let self = this;
+      let uri = `../static/data/potsdam/${streetName}.json`;
+      return axios.get(uri);
     }
   }
 })
