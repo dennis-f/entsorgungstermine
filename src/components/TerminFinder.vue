@@ -5,9 +5,11 @@
       <option v-text="street" v-for="street in streets"></option>
     </select>
 
-  <div class="dates">
+  <div class="dates" v-for="value in filteredMonths">
     <ul>
-      <li v-text="value" v-for="value in filteredMonths">
+      <li v-for="date in value.values">
+        <span v-text="date.date"></span>
+        <span v-text="date.values"></span>
       </li>
     </ul>
   </div>
@@ -73,8 +75,7 @@ ul {
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  margin: 10px 0;
 }
 
 a {

@@ -4,13 +4,18 @@
   "description": "Entsorgungstermine für die Stadt Potsdam",
   "author": "max <hello@maxbehr.de>",
   "private": true,
+  "watch": {
+    "test": "{src}/*.js"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "tape": "tape test/*.js",
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "watch": "npm-watch"
   },
   "dependencies": {
     "axios": "^0.17.0",
