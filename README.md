@@ -2,6 +2,19 @@
 
 > Entsorgungstermine für die Stadt Potsdam
 
+## Structure
+The `static` directory contains all streets with their disposal dates. Besides those files, there's also `streetnames.json`, which contains a list of all available streets.
+``` bash
+├── static
+│   └── data
+│       └── potsdam
+│           ├── Aalsteig.json
+│           ├── Ahornstr.json
+│           ├── Ahornweg.json
+            [...]
+            streetnames.json
+```
+
 ## Build Setup
 
 ``` bash
